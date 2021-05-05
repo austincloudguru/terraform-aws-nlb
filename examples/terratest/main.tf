@@ -35,3 +35,12 @@ module "nlb-noeip" {
   subnet_mapping = module.vpc.private_subnets
   enable_eip     = true
 }
+
+module "nlb-noeip-listener" {
+  source            = "../../modules/nlb-listener"
+  name              = "terratest-noeip-tg"
+  load_balancer_arn = module.nlb-noeip.nlb_arn
+  protocol          = "TCP"
+  port              = "443"
+  vpc_id            = module.vpc.vpc_id
+}
