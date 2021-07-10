@@ -1,4 +1,8 @@
 # AWS Network Load Balancer Module
+[![Terratest](https://github.com/austincloudguru/terraform-aws-nlb/workflows/Terratest/badge.svg?event=push)](https://github.com/austincloudguru/terraform-aws-nlb/actions?query=workflow%3ATerratest)
+![Latest Version](https://img.shields.io/github/v/tag/austincloudguru/terraform-aws-nlb?sort=semver&label=Latest%20Version)
+[![License](https://img.shields.io/github/license/austincloudguru/terraform-aws-nlb)](https://github.com/austincloudguru/terraform-aws-nlb/blob/master/LICENSE)
+
 A set of Terraform modules for working with an AWS Network Load Balancer (NLB).
 
 # Usage
