@@ -67,7 +67,7 @@ module "alb" {
 
 module "nlb-alb-lambda" {
   source        = "../../modules/nlb-alb-lambda"
-  name          = "terratest"
+  name          = "terratest-1234"
   alb_dns_name  = module.alb.alb_dns_name
   aws_region    = var.region
   nlb_tg_arn    = module.nlb-eip-listener.nlb_target_group_arn
