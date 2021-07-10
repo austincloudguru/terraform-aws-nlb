@@ -5,3 +5,7 @@ output "nlb_eip_url" {
 output "nlb_noeip_url" {
   value = module.nlb-noeip.nlb_dns_name
 }
+
+output "s3_bucket_arn" {
+  value = module.nlb-alb-lambda.s3_bucket_arn
+}

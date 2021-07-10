@@ -2,7 +2,8 @@
 # Create an S3 Bucket for Tracking public access
 #------------------------------------------------------------------------------
 resource "aws_s3_bucket" "this" {
-  bucket = join("-", [var.name, "alb-tg-bucket"])
+  bucket        = join("-", [var.name, "alb-tg-bucket"])
+  force_destroy = var.force_destroy
   lifecycle {
     prevent_destroy = false
   }

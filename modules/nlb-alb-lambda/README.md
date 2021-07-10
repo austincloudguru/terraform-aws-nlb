@@ -47,6 +47,7 @@ No modules.
 | <a name="input_alb_listener"></a> [alb\_listener](#input\_alb\_listener) | The traffic listener port of the ALB | `number` | `443` | no |
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | The AWS region to work in | `string` | `"us-east-1"` | no |
 | <a name="input_cw_metric_flag_ip_count"></a> [cw\_metric\_flag\_ip\_count](#input\_cw\_metric\_flag\_ip\_count) | The controller flag that enables the CloudWatch metric of the IP address count. | `bool` | `true` | no |
+| <a name="input_force_destroy"></a> [force\_destroy](#input\_force\_destroy) | A boolean that indicates all objects (including any locked objects) should be deleted from the bucket so that the bucket can be destroyed without error. | `bool` | `false` | no |
 | <a name="input_invocations_before_deregistration"></a> [invocations\_before\_deregistration](#input\_invocations\_before\_deregistration) | Then number of required Invocations before an IP address is deregistered. | `number` | `3` | no |
 | <a name="input_max_lookup_per_invocation"></a> [max\_lookup\_per\_invocation](#input\_max\_lookup\_per\_invocation) | The max times of DNS look per invocation. | `number` | `50` | no |
 | <a name="input_name"></a> [name](#input\_name) | The name of the LB | `string` | `""` | no |
@@ -58,5 +59,7 @@ No modules.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_s3_bucket_arn"></a> [s3\_bucket\_arn](#output\_s3\_bucket\_arn) | The ARN of the bucket. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

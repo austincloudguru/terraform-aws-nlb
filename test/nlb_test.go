@@ -19,6 +19,10 @@ func TestExamplesTerraform(t *testing.T) {
   nlbEipUrl := terraform.Output(t, terraformOpts, "nlb_eip_url")
   assert.Contains(t, nlbEipUrl, "terratest-eip")
 
+  // Verify that the S3 bucket is created
+  lambdaS3Bucket := terraform.Output(t, terraformOpts, "s3_bucket_arn")
+  assert.Contains(t, lambdaS3Bucket, "terratest")
+
   // Verify that the NOEIP NLB is created
   nlbNoEipUrl := terraform.Output(t, terraformOpts, "nlb_noeip_url")
   assert.Contains(t, nlbNoEipUrl, "terratest-noeip")

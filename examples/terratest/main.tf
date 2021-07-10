@@ -53,3 +53,25 @@ module "nlb-noeip-listener" {
   port              = "443"
   vpc_id            = module.vpc.vpc_id
 }
+
+module "alb" {
+  source                     = "AustinCloudGuru/alb/aws//modules/alb"
+  version                    = "1.4.3"
+  name                       = "terratest-alb"
+  vpc_id                     = module.vpc.vpc_id
+  subnets                    = module.vpc.private_subnets
+  internal                   = true
+  enable_deletion_protection = false
+  idle_timeout               = 60
+}
+
+module "nlb-alb-lambda" {
+  source        = "../../modules/nlb-alb-lambda"
+  name          = "terratest"
+  alb_dns_name  = module.alb.alb_dns_name
+  aws_region    = var.region
+  nlb_tg_arn    = module.nlb-eip-listener.nlb_target_group_arn
+  protocol      = "HTTPS"
+  vpc_id        = module.vpc.vpc_id
+  force_destroy = true
+}
