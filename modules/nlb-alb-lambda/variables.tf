@@ -29,7 +29,7 @@ variable "tags" {
 
 variable "region_lambda_function" {
   type    = string
-  default = "blog-posts/static-ip-for-application-load-balancer/populate_NLB_TG_with_ALB.zip"
+  default = "blog-posts/static-ip-for-application-load-balancer/populate_NLB_TG_with_ALB_python3.zip"
 }
 
 variable "alb_dns_name" {
