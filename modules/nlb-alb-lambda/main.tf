@@ -122,7 +122,7 @@ resource "aws_lambda_function" "nlb_alb" {
   s3_key        = var.region_lambda_function
   handler       = "populate_NLB_TG_with_ALB.lambda_handler"
   role          = aws_iam_role.lambda_role.arn
-  runtime       = "python2.7"
+  runtime       = "python3.8"
   timeout       = 300
 
   environment {
