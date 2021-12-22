@@ -56,7 +56,7 @@ module "nlb-noeip-listener" {
 
 module "alb" {
   source                     = "AustinCloudGuru/alb/aws//modules/alb"
-  version                    = "1.4.3"
+  version                    = "1.4.5"
   name                       = "terratest-alb"
   vpc_id                     = module.vpc.vpc_id
   subnets                    = module.vpc.private_subnets
