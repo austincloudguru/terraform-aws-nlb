@@ -10,7 +10,7 @@ https://aws.amazon.com/blogs/networking-and-content-delivery/using-static-ip-add
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14, < 1.1 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14, < 1.2 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~>3.0 |
 
 ## Providers
@@ -53,7 +53,7 @@ No modules.
 | <a name="input_name"></a> [name](#input\_name) | The name of the LB | `string` | `""` | no |
 | <a name="input_nlb_tg_arn"></a> [nlb\_tg\_arn](#input\_nlb\_tg\_arn) | The ARN of the NLBs target group | `string` | n/a | yes |
 | <a name="input_protocol"></a> [protocol](#input\_protocol) | The protocol to use for routing traffic to the targets | `string` | `"HTTP"` | no |
-| <a name="input_region_lambda_function"></a> [region\_lambda\_function](#input\_region\_lambda\_function) | n/a | `string` | `"blog-posts/static-ip-for-application-load-balancer/populate_NLB_TG_with_ALB.zip"` | no |
+| <a name="input_region_lambda_function"></a> [region\_lambda\_function](#input\_region\_lambda\_function) | n/a | `string` | `"blog-posts/static-ip-for-application-load-balancer/populate_NLB_TG_with_ALB_python3.zip"` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to add to all resources | `map(string)` | `{}` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | The identifier of the VPC in which to create the target group | `string` | n/a | yes |
 
