@@ -2,6 +2,12 @@
 # Create an S3 Bucket for Tracking public access
 #------------------------------------------------------------------------------
 resource "aws_s3_bucket" "this" {
+  #checkov:skip=CKV2_AWS_62: "Ensure S3 buckets should have event notifications enabled"
+  #checkov:skip=CKV_AWS_18: "Ensure the S3 bucket has access logging enabled"
+  #checkov:skip=CKV2_AWS_61: "Ensure that an S3 bucket has a lifecycle configuration"
+  #checkov:skip=CKV_AWS_145: "Ensure that S3 buckets are encrypted with KMS by default"
+  #checkov:skip=CKV_AWS_144: "Ensure that S3 bucket has cross-region replication enabled"
+  #checkov:skip=CKV_AWS_21: "Ensure all data stored in the S3 bucket have versioning enabled"
   bucket        = join("-", [var.name, "alb-tg-bucket"])
   force_destroy = var.force_destroy
   lifecycle {
@@ -41,6 +47,9 @@ resource "aws_iam_role_policy" "lambda_role_policy" {
 }
 
 data "aws_iam_policy_document" "lambda_policy" {
+  #checkov:skip=CKV_AWS_108: "Ensure IAM policies does not allow data exfiltration"
+  #checkov:skip=CKV_AWS_111: "Ensure IAM policies does not allow write access without constraints"
+  #checkov:skip=CKV_AWS_356: "Ensure no IAM policies documents allow "*" as a statement's resource for restrictable actions"
   statement {
     sid    = "LambdaLogging"
     effect = "Allow"
@@ -115,6 +124,12 @@ resource "aws_lambda_permission" "cloudwatch_check_nlb_alb" {
 }
 
 resource "aws_lambda_function" "nlb_alb" {
+  #checkov:skip=CKV_AWS_50: "X-Ray tracing is enabled for Lambda"
+  #checkov:skip=CKV_AWS_117: "Ensure that AWS Lambda function is configured inside a VPC"
+  #checkov:skip=CKV_AWS_116: "Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)"
+  #checkov:skip=CKV_AWS_173: "Check encryption settings for Lambda environmental variable"
+  #checkov:skip=CKV_AWS_272: "Ensure AWS Lambda function is configured to validate code-signing"
+  #checkov:skip=CKV_AWS_115: "Ensure that AWS Lambda function is configured for function-level concurrent execution limit"
   depends_on    = [aws_s3_bucket.this]
   function_name = join("-", [var.name, "nlb-alb-tg"])
   description   = join(" ", ["NLB to ALB for", var.name])

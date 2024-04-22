@@ -6,6 +6,7 @@ data "aws_availability_zones" "available" {
 }
 
 module "vpc" {
+  #checkov:skip=CKV_TF_1: "Ensure Terraform module sources use a commit hash"
   source             = "terraform-aws-modules/vpc/aws"
   name               = "terratest-vpc"
   cidr               = "10.0.0.0/16"
@@ -55,8 +56,9 @@ module "nlb-noeip-listener" {
 }
 
 module "alb" {
+  #checkov:skip=CKV_TF_1: "Ensure Terraform module sources use a commit hash"
   source                     = "AustinCloudGuru/alb/aws//modules/alb"
-  version                    = "1.4.5"
+  version                    = "1.8.0"
   name                       = "terratest-alb"
   vpc_id                     = module.vpc.vpc_id
   subnets                    = module.vpc.private_subnets

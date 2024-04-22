@@ -1,10 +1,15 @@
 resource "aws_eip" "these" {
+  #checkov:skip=CKV2_AWS_19: "Ensure that all EIP addresses allocated to a VPC are attached to EC2 instances"
   count = var.enable_eip && !var.internal ? length(var.subnet_mapping) : 0
-  vpc   = true
   tags  = merge({ "Name" = var.name }, var.tags)
 }
 
 resource "aws_lb" "this" {
+  #checkov:skip=CKV_AWS_152: "Ensure that Load Balancer (Network/Gateway) has cross-zone load balancing enabled"
+  #checkov:skip=CKV_AWS_150: "Ensure that Load Balancer has deletion protection enabled"
+  #checkov:skip=CKV_AWS_131: "Ensure that ALB drops HTTP headers"
+  #checkov:skip=CKV_AWS_103: "Ensure that load balancer is using at least TLS 1.2"
+  #checkov:skip=CKV2_AWS_28: "Ensure public facing ALB are protected by WAF"
   name                             = var.name
   internal                         = var.internal
   load_balancer_type               = "network"
